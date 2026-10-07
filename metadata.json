@@ -1,0 +1,6 @@
+{
+  "name": "Urdu English Dictionary",
+  "description": "جامع اردو انگلش ڈکشنری - طلبہ اور تمام شعبہ ہائے زندگی کے لیے آن لائن اور آف لائن موڈ، سرچ، فیورٹ لسٹ، اور تلفظ کے ساتھ",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

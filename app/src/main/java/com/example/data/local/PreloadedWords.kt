@@ -1,0 +1,655 @@
+package com.example.data.local
+
+import com.example.data.model.WordItem
+
+object PreloadedWords {
+    fun getInitialWords(): List<WordItem> = listOf(
+        // ================= ACADEMIC & EDUCATION (تعلیم و تدریس) =================
+        WordItem(
+            english = "Education",
+            urdu = "تعلیم / تربیت",
+            romanUrdu = "Taleem / Tarbiyat",
+            partOfSpeech = "Noun (اسم)",
+            definition = "The process of receiving or giving systematic instruction, especially at a school or university.",
+            urduDefinition = "باقاعدہ سیکھنے سکھانے کا عمل، خاص طور پر اسکول یا جامعہ میں حاصل کی جانے والی معلومات و فہم۔",
+            exampleEn = "Education is the most powerful weapon which you can use to change the world.",
+            exampleUr = "تعلیم وہ سب سے طاقتور ہتھیار ہے جس کے ذریعے آپ دنیا بدل سکتے ہیں۔",
+            synonyms = "Schooling, Tuition, Learning, Instruction, Enlightenment",
+            antonyms = "Ignorance, Illiteracy",
+            category = "تعلیم (Academic)"
+        ),
+        WordItem(
+            english = "Curriculum",
+            urdu = "نصاب / نصابِ تعلیم",
+            romanUrdu = "Nisaab / Nisaab-e-Taleem",
+            partOfSpeech = "Noun (اسم)",
+            definition = "The subjects comprising a course of study in a school or college.",
+            urduDefinition = "کسی تعلیمی ادارے یا جماعت میں پڑھائے جانے والے مضامین کا مجموعہ اور لائحہ عمل۔",
+            exampleEn = "The university is updating its curriculum to meet modern industrial needs.",
+            exampleUr = "جامعہ جدید صنعتی تقاضوں کو پورا کرنے کے لیے اپنے نصاب میں تجدید کر رہی ہے۔",
+            synonyms = "Syllabus, Program, Course of study",
+            category = "تعلیم (Academic)"
+        ),
+        WordItem(
+            english = "Hypothesis",
+            urdu = "مفروضہ",
+            romanUrdu = "Mafrooza",
+            partOfSpeech = "Noun (اسم)",
+            definition = "A proposed explanation made on the basis of limited evidence as a starting point for further investigation.",
+            urduDefinition = "تحقیق یا تجربے کی بنیاد رکھنے کے لیے قائم کیا گیا عارضی نظریہ یا قیاس۔",
+            exampleEn = "The scientist conducted experiments to test her hypothesis.",
+            exampleUr = "سائنسدان نے اپنے مفروضے کی جانچ کے لیے تجربات کیے۔",
+            synonyms = "Theory, Supposition, Premise, Assumption",
+            category = "تعلیم (Academic)"
+        ),
+        WordItem(
+            english = "Dissertation",
+            urdu = "مقالہ / تحقیقی مقالہ",
+            romanUrdu = "Maqala / Tehqeeqi Maqala",
+            partOfSpeech = "Noun (اسم)",
+            definition = "A long essay on a particular subject, especially one written for a university degree.",
+            urduDefinition = "کسی خاص علمی موضوع پر لکھی گئی مفصل تحقیقی تحریر جو عموماً اعلیٰ ڈگری کے لیے پیش کی جاتی ہے۔",
+            exampleEn = "He spent two years writing his doctoral dissertation.",
+            exampleUr = "اس نے اپنے پی ایچ ڈی کے مقالے کی تحریر میں دو سال صرف کیے۔",
+            synonyms = "Thesis, Treatise, Research paper, Essay",
+            category = "تعلیم (Academic)"
+        ),
+        WordItem(
+            english = "Pedagogy",
+            urdu = "فنِ تدریس / طریقہ تعلیم",
+            romanUrdu = "Fann-e-Tadrees / Tareeqa-e-Taleem",
+            partOfSpeech = "Noun (اسم)",
+            definition = "The method and practice of teaching, especially as an academic subject or theoretical concept.",
+            urduDefinition = "پڑھانے اور سکھانے کا باقاعدہ سائنسی اور عملی فن۔",
+            exampleEn = "Modern pedagogy emphasizes student-centered learning.",
+            exampleUr = "جدید فنِ تدریس طلبہ پر مبنی تعلیم کو فوقیت دیتا ہے۔",
+            synonyms = "Teaching method, Tutelage, Didactics",
+            category = "تعلیم (Academic)"
+        ),
+        WordItem(
+            english = "Scholarship",
+            urdu = "وظیفہ / علمی قابلیت",
+            romanUrdu = "Wazeefa / Ilmi Qabiliyat",
+            partOfSpeech = "Noun (اسم)",
+            definition = "A grant or payment made to support a student's education, or academic study and achievement.",
+            urduDefinition = "طالب علم کی مالی معاونت کے لیے تعلیمی وظیفہ یا گہری علمی استعداد۔",
+            exampleEn = "She was awarded a full scholarship to study engineering.",
+            exampleUr = "اسے انجینئرنگ کی تعلیم حاصل کرنے کے لیے مکمل وظیفہ دیا گیا۔",
+            synonyms = "Grant, Fellowship, Erudition, Academic achievement",
+            category = "تعلیم (Academic)"
+        ),
+        WordItem(
+            english = "Evaluation",
+            urdu = "تخمینہ / جانچ پڑتال / جائزہ",
+            romanUrdu = "Takhmeena / Jaancha partal / Jaeza",
+            partOfSpeech = "Noun (اسم)",
+            definition = "The making of a judgment about the amount, number, or value of something; assessment.",
+            urduDefinition = "کسی چیز کی قدر، کارکردگی یا معیار کی جانچ اور فیصلہ۔",
+            exampleEn = "Teachers conducted a thorough evaluation of students' progress.",
+            exampleUr = "اساتذہ نے طلبہ کی تعلیمی ترقی کا تفصیلی جائزہ لیا۔",
+            synonyms = "Assessment, Appraisal, Examination, Review",
+            category = "تعلیم (Academic)"
+        ),
+
+        // ================= SCIENCE & TECHNOLOGY (سائنس و ٹیکنالوجی) =================
+        WordItem(
+            english = "Algorithm",
+            urdu = "الگورتھم / حسابی لائحہ عمل",
+            romanUrdu = "Algorithm / Hisabi Laeha Amal",
+            partOfSpeech = "Noun (اسم)",
+            definition = "A process or set of rules to be followed in calculations or problem-solving operations, especially by a computer.",
+            urduDefinition = "کسی مسئلے کو حل کرنے یا شمارندہ (کمپیوٹر) کو ہدایت دینے کے لیے مرحلہ وار اصولوں کا مجموعہ۔",
+            exampleEn = "Search engines use a sophisticated algorithm to rank web pages.",
+            exampleUr = "تلاش کے انجن صفحات کی درجہ بندی کے لیے پیچیدہ الگورتھم استعمال کرتے ہیں۔",
+            synonyms = "Procedure, Formula, Method, Protocol",
+            category = "سائنس و ٹیکنالوجی (Science & Tech)"
+        ),
+        WordItem(
+            english = "Artificial Intelligence",
+            urdu = "مصنوعی ذہانت",
+            romanUrdu = "Masnooi Zahanat",
+            partOfSpeech = "Noun (اسم)",
+            definition = "The theory and development of computer systems able to perform tasks normally requiring human intelligence.",
+            urduDefinition = "کمپیوٹر یا مشینوں کی ایسی صلاحیت جس میں وہ انسانی عقل و فہم کی طرح فیصلے اور سیکھنے کا کام انجام دیتے ہیں۔",
+            exampleEn = "Artificial intelligence is revolutionizing multiple industries.",
+            exampleUr = "مصنوعی ذہانت متعدد شعبوں میں انقلابی تبدیلیاں لا رہی ہے۔",
+            synonyms = "Machine intelligence, Automation, AI",
+            category = "سائنس و ٹیکنالوجی (Science & Tech)"
+        ),
+        WordItem(
+            english = "Photosynthesis",
+            urdu = "ضیائی تالیف / پودوں کی خوراک سازی",
+            romanUrdu = "Ziyai Taleef",
+            partOfSpeech = "Noun (اسم)",
+            definition = "The process by which green plants use sunlight to synthesize nutrients from carbon dioxide and water.",
+            urduDefinition = "وہ عمل جس کے ذریعے سبز پودے سورج کی روشنی، کاربن ڈائی آکسائیڈ اور پانی کی مدد سے اپنی خوراک تیار کرتے ہیں۔",
+            exampleEn = "Photosynthesis produces oxygen which is vital for animal life.",
+            exampleUr = "ضیائی تالیف آکسیجن پیدا کرتی ہے جو جانداروں کی بقا کے لیے ناگزیر ہے۔",
+            synonyms = "Plant food synthesis",
+            category = "سائنس و ٹیکنالوجی (Science & Tech)"
+        ),
+        WordItem(
+            english = "Encryption",
+            urdu = "رمز نگاری / کوٹ بندی",
+            romanUrdu = "Ramz Nigari / Code Bandi",
+            partOfSpeech = "Noun (اسم)",
+            definition = "The process of converting information or data into a code, especially to prevent unauthorized access.",
+            urduDefinition = "ڈیٹا یا پیغامات کو خفیہ رموز میں تبدیل کرنے کا طریقہ تاکہ غیر متعلقہ افراد تک رسائی نہ ہو۔",
+            exampleEn = "End-to-end encryption ensures user privacy and data security.",
+            exampleUr = "اینڈ ٹو اینڈ رمز نگاری صارف کے راز داری اور معلومات کے تحفظ کو یقینی بناتی ہے۔",
+            synonyms = "Cipher, Encoding, Cryptography",
+            antonyms = "Decryption, Decoding",
+            category = "سائنس و ٹیکنالوجی (Science & Tech)"
+        ),
+        WordItem(
+            english = "Thermodynamics",
+            urdu = "حرارت حرکیات / علمِ حرارت",
+            romanUrdu = "Hararat Harkiyaat",
+            partOfSpeech = "Noun (اسم)",
+            definition = "The branch of physical science that deals with the relations between heat and other forms of energy.",
+            urduDefinition = "طبیعیات کی وہ شاخ جو حرارت اور توانائی کی دیگر اقسام کے باہمی تعلق کا مطالعہ کرتی ہے۔",
+            exampleEn = "The first law of thermodynamics states that energy cannot be created or destroyed.",
+            exampleUr = "حرارت حرکیات کا پہلا قانون کہتا ہے کہ توانائی نہ تو پیدا کی جا سکتی ہے نہ تباہ۔",
+            synonyms = "Heat physics",
+            category = "سائنس و ٹیکنالوجی (Science & Tech)"
+        ),
+        WordItem(
+            english = "Quantum",
+            urdu = "کوانٹم / بنیادی اکائی",
+            romanUrdu = "Quantum / Bunyadi Ikai",
+            partOfSpeech = "Noun / Adjective (اسم / صفت)",
+            definition = "A discrete quantity of energy proportional in magnitude to the frequency of the radiation it represents.",
+            urduDefinition = "توانائی یا مادہ کی وہ کم ترین مقدار جو کسی تعامل میں حصہ لے سکتی ہے۔",
+            exampleEn = "Quantum computing promises to solve intractable problems in seconds.",
+            exampleUr = "کوانٹم کمپیوٹنگ پیچیدہ مسائل کو چند لمحوں میں حل کرنے کا وعدہ کرتی ہے۔",
+            synonyms = "Particle, Discrete packet, Minimal unit",
+            category = "سائنس و ٹیکنالوجی (Science & Tech)"
+        ),
+
+        // ================= MEDICAL & HEALTHCARE (طب و صحت) =================
+        WordItem(
+            english = "Diagnosis",
+            urdu = "تشخیص / بیماری کی شناخت",
+            romanUrdu = "Tashkhees / Bimari ki Shinakht",
+            partOfSpeech = "Noun (اسم)",
+            definition = "The identification of the nature of an illness or other problem by examination of the symptoms.",
+            urduDefinition = "علامات اور جانچ پڑتال کے ذریعے کسی مرض یا حالت کی حتمی شناخت کرنا۔",
+            exampleEn = "Early diagnosis of the disease increases the chances of recovery.",
+            exampleUr = "مرض کی بروقت اور جلد تشخیص صحت یابی کے امکانات کو بڑھاتی ہے۔",
+            synonyms = "Identification, Detection, Analysis, Assessment",
+            category = "طب و صحت (Medical)"
+        ),
+        WordItem(
+            english = "Prescription",
+            urdu = "نسخہ / ادویات کا نسخہ",
+            romanUrdu = "Nuskha / Adviyaat ka nuskha",
+            partOfSpeech = "Noun (اسم)",
+            definition = "An instruction written by a medical practitioner that authorizes a patient to receive medicine or treatment.",
+            urduDefinition = "طبیب یا ڈاکٹر کی جانب سے مریض کے علاج اور دوا کے استعمال کے لیے لکھی گئی تحریر۔",
+            exampleEn = "You need a doctor's prescription to purchase these antibiotics.",
+            exampleUr = "ان اینٹی بائیوٹکس ادویات کی خریداری کے لیے ڈاکٹر کے نسخے کی ضرورت ہوتی ہے۔",
+            synonyms = "Recipe, Instructions, Medication order",
+            category = "طب و صحت (Medical)"
+        ),
+        WordItem(
+            english = "Antibiotic",
+            urdu = "دافعِ جراثیم / اینٹی بائیوٹک",
+            romanUrdu = "Dafe-e-Jarasheem",
+            partOfSpeech = "Noun / Adjective (اسم / صفت)",
+            definition = "A medicine that inhibits the growth of or destroys microorganisms such as bacteria.",
+            urduDefinition = "وہ دوا جو نقصان دہ جراثیم اور بیکٹیریا کی افزائش کو روکتی ہے یا انہیں ختم کرتی ہے۔",
+            exampleEn = "The doctor advised completing the full course of antibiotics.",
+            exampleUr = "ڈاکٹر نے اینٹی بائیوٹکس کا مکمل کورس پورا کرنے کی ہدایت کی۔",
+            synonyms = "Antimicrobial, Bactericide",
+            category = "طب و صحت (Medical)"
+        ),
+        WordItem(
+            english = "Quarantine",
+            urdu = "قرنطینہ / علیحدگی کی میعاد",
+            romanUrdu = "Quranteena / Alehdagi ki meyaad",
+            partOfSpeech = "Noun / Verb (اسم / فعل)",
+            definition = "A state, period, or place of isolation in which people or animals that have arrived from elsewhere or been exposed to infectious disease are placed.",
+            urduDefinition = "کسی متعدی وبا کو پھیلنے سے روکنے کے لیے متاثرہ افراد کو الگ رکھنے کا انتظام یا مدت۔",
+            exampleEn = "Travelers were placed in quarantine for fourteen days.",
+            exampleUr = "مسافروں کو چودہ دن کے لیے قرنطینہ میں رکھا گیا۔",
+            synonyms = "Isolation, Confinement, Separation",
+            category = "طب و صحت (Medical)"
+        ),
+        WordItem(
+            english = "Cardiovascular",
+            urdu = "قلبی وعائی / دل اور خون کی نالیوں کا",
+            romanUrdu = "Qalbi Weai / Dil aur shariyanon ka",
+            partOfSpeech = "Adjective (صفت)",
+            definition = "Relating to the heart and blood vessels.",
+            urduDefinition = "وہ کیفیت یا عضو جس کا تعلق دل اور خون کی نالیوں کے نظام سے ہو۔",
+            exampleEn = "Regular walking reduces the risk of cardiovascular diseases.",
+            exampleUr = "روزانہ پیدل چلنا دل اور خون کی نالیوں کے امراض کے خطرے کو کم کرتا ہے۔",
+            synonyms = "Circulatory, Cardiac",
+            category = "طب و صحت (Medical)"
+        ),
+        WordItem(
+            english = "Symptom",
+            urdu = "علامت / مرض کا اثر",
+            romanUrdu = "Alamat / Marz ka asar",
+            partOfSpeech = "Noun (اسم)",
+            definition = "A physical or mental feature which is regarded as indicating a condition of disease.",
+            urduDefinition = "جسمانی یا ذہنی کیفیت جو کسی بیماری یا خرابی کی موجودگی کی نشاندہی کرے۔",
+            exampleEn = "Fever and cough are common symptoms of viral flu.",
+            exampleUr = "بخار اور کھانسی موسمی فلو کی عمومی علامات ہیں۔",
+            synonyms = "Sign, Indication, Manifestation",
+            category = "طب و صحت (Medical)"
+        ),
+
+        // ================= LAW & JUDICIARY (قانون و انصاف) =================
+        WordItem(
+            english = "Constitution",
+            urdu = "آئین / دستور",
+            romanUrdu = "Aaeen / Dastoor",
+            partOfSpeech = "Noun (اسم)",
+            definition = "A body of fundamental principles or established precedents according to which a state or other organization is acknowledged to be governed.",
+            urduDefinition = "کسی ریاست کا بنیادی قانون اور اصولوں کا وہ ضابطہ جس کے تحت حکومت اور عدلیہ کام کرتی ہے۔",
+            exampleEn = "The constitution protects the fundamental rights of all citizens.",
+            exampleUr = "آئین تمام شہریوں کے بنیادی حقوق کا تحفظ کرتا ہے۔",
+            synonyms = "Charter, Supreme law, Code, Statute",
+            category = "قانون و انصاف (Law & Justice)"
+        ),
+        WordItem(
+            english = "Jurisdiction",
+            urdu = "دائرہ اختیار / عدالتی حدود",
+            romanUrdu = "Daira-e-Ikhtiyar",
+            partOfSpeech = "Noun (اسم)",
+            definition = "The official power to make legal decisions and judgments.",
+            urduDefinition = "کسی عدالت، جج یا ادارے کو حاصل قانونی فیصلہ سازی کا دائرہ کار اور حدود۔",
+            exampleEn = "The supreme court has nationwide jurisdiction.",
+            exampleUr = "سپریم کورٹ کا دائرہ اختیار پورے ملک پر محیط ہے۔",
+            synonyms = "Authority, Remit, Command, Sovereignty",
+            category = "قانون و انصاف (Law & Justice)"
+        ),
+        WordItem(
+            english = "Affidavit",
+            urdu = "حلف نامہ / بیانِ حلفی",
+            romanUrdu = "Half Nama / Bayan-e-Halfi",
+            partOfSpeech = "Noun (اسم)",
+            definition = "A written statement confirmed by oath or affirmation, for use as evidence in court.",
+            urduDefinition = "قسم کھا کر دیا گیا تحریری بیان جو عدالت یا مجاز افسر کے روبرو تصدیق شدہ ہو۔",
+            exampleEn = "The witness signed an affidavit detailing the events.",
+            exampleUr = "گواہ نے واقعات کی تفصیلات پر مبنی بیانِ حلفی پر دستخط کیے۔",
+            synonyms = "Sworn statement, Testimony, Declaration",
+            category = "قانون و انصاف (Law & Justice)"
+        ),
+        WordItem(
+            english = "Verdict",
+            urdu = "فیصلہ / عدالتی حکم",
+            romanUrdu = "Faisla / Adalati Hukm",
+            partOfSpeech = "Noun (اسم)",
+            definition = "A decision on a disputed issue in a civil or criminal case or an inquest.",
+            urduDefinition = "کسی مقدمے یا نزاع کی تمام تر کارروائی کے بعد عدالت یا جیوری کی طرف سے دیا جانے والا حتمی فیصلہ۔",
+            exampleEn = "The jury delivered a verdict of not guilty.",
+            exampleUr = "جیوری نے بے گناہی کا متفقہ فیصلہ سنایا۔",
+            synonyms = "Judgment, Ruling, Finding, Adjudication",
+            category = "قانون و انصاف (Law & Justice)"
+        ),
+        WordItem(
+            english = "Legislation",
+            urdu = "قانون سازی / قوانین",
+            romanUrdu = "Qanoon Saazi / Qawaneen",
+            partOfSpeech = "Noun (اسم)",
+            definition = "Laws, considered collectively; the act or process of making laws.",
+            urduDefinition = "پارلیمنٹ یا اسمبلی میں عوام کے مفاد کے لیے نئے قوانین کی تیاری اور منظوری کا عمل۔",
+            exampleEn = "The parliament passed landmark legislation for child protection.",
+            exampleUr = "پارلیمنٹ نے بچوں کے تحفظ کے لیے تاریخی قانون سازی منظور کی۔",
+            synonyms = "Lawmaking, Enactment, Statutes, Decrees",
+            category = "قانون و انصاف (Law & Justice)"
+        ),
+        WordItem(
+            english = "Bail",
+            urdu = "ضمانت",
+            romanUrdu = "Zamanat",
+            partOfSpeech = "Noun / Verb (اسم / فعل)",
+            definition = "The temporary release of an accused person awaiting trial, sometimes on condition that a sum of money is lodged.",
+            urduDefinition = "عدالت میں پیشی کی یقین دہانی اور مالی مچلکے پر ملزم کی عارضی رہائی۔",
+            exampleEn = "The judge granted bail to the defendant.",
+            exampleUr = "جج نے مدعا علیہ کو ضمانت پر رہا کرنے کا حکم دیا۔",
+            synonyms = "Surety, Bond, Guarantee, Recognizance",
+            category = "قانون و انصاف (Law & Justice)"
+        ),
+
+        // ================= BUSINESS & COMMERCE (تجارت و معاشیات) =================
+        WordItem(
+            english = "Inflation",
+            urdu = "افراطِ زر / گرانی",
+            romanUrdu = "Afraat-e-Zar / Giraani",
+            partOfSpeech = "Noun (اسم)",
+            definition = "A general increase in prices and fall in the purchasing value of money.",
+            urduDefinition = "اشیاء و خدمات کی قیمتوں میں عمومی اضافہ اور روپے کی قوتِ خرید میں کمی۔",
+            exampleEn = "High inflation directly impacts the cost of living for working families.",
+            exampleUr = "بلند افراطِ زر محنت کش خاندانوں کے رہن سہن کے اخراجات پر براہِ راست اثر انداز ہوتا ہے۔",
+            synonyms = "Price hike, Currency devaluation",
+            antonyms = "Deflation",
+            category = "تجارت و معاشیات (Business)"
+        ),
+        WordItem(
+            english = "Investment",
+            urdu = "سرمایہ کاری",
+            romanUrdu = "Sarmaya Kaari",
+            partOfSpeech = "Noun (اسم)",
+            definition = "The action or process of investing money for profit or material result.",
+            urduDefinition = "نفع یا پیداواری مقصد کے لیے کسی کاروبار یا منصوبے میں روپیہ لگانا۔",
+            exampleEn = "Investment in renewable energy has grown significantly.",
+            exampleUr = "توانائی کے متبادل ذرائع میں سرمایہ کاری میں نمایاں اضافہ ہوا ہے۔",
+            synonyms = "Funding, Capital deployment, Stake",
+            category = "تجارت و معاشیات (Business)"
+        ),
+        WordItem(
+            english = "Entrepreneur",
+            urdu = "کاروباری شخصیت / صنعت کار / کاروباری بانی",
+            romanUrdu = "Karobari Shakhsiyat / Sanatkaar",
+            partOfSpeech = "Noun (اسم)",
+            definition = "A person who sets up a business or businesses, taking on financial risks in the hope of profit.",
+            urduDefinition = "وہ شخص جو نئے نفع بخش تجارتی منصوبے کی بنیاد رکھتا ہے اور مالی خطرات مول لیتا ہے۔",
+            exampleEn = "The young entrepreneur launched an innovative mobile platform.",
+            exampleUr = "نوجوان کاروباری بانی نے ایک جدید موبائل پلیٹ فارم متعارف کرایا۔",
+            synonyms = "Business founder, Innovator, Industrialist",
+            category = "تجارت و معاشیات (Business)"
+        ),
+        WordItem(
+            english = "Revenue",
+            urdu = "آمدنی / محاصل",
+            romanUrdu = "Aamdani / Mahasil",
+            partOfSpeech = "Noun (اسم)",
+            definition = "Income, especially when of a company or organization and of a substantial nature.",
+            urduDefinition = "کسی کمپنی، کاروبار یا ریاست کو محصولات یا فروخت کے ذریعے حاصل ہونے والی کل رقم۔",
+            exampleEn = "The company reported a record increase in annual revenue.",
+            exampleUr = "کمپنی نے سالانہ آمدنی میں ریکارڈ اضافے کی اطلاع دی۔",
+            synonyms = "Income, Turnover, Earnings, Receipts",
+            antonyms = "Expenditure, Deficit",
+            category = "تجارت و معاشیات (Business)"
+        ),
+        WordItem(
+            english = "Collateral",
+            urdu = "رہن / کفالت / ضمانتی اثاثہ",
+            romanUrdu = "Rahn / Kafalat / Zamanati Asasa",
+            partOfSpeech = "Noun (اسم)",
+            definition = "Something pledged as security for repayment of a loan, to be forfeited in the event of a default.",
+            urduDefinition = "قرض حاصل کرنے کے لیے بینک یا قرض دہندہ کے پاس بطور ضمانت رکھوائے جانے والے اثاثے۔",
+            exampleEn = "She used her real estate property as collateral for the business loan.",
+            exampleUr = "اس نے کاروباری قرض کے لیے اپنی غیر منقولہ جائیداد کو بطور ضمانتی اثاثہ پیش کیا۔",
+            synonyms = "Security, Guarantee, Pledge, Deposit",
+            category = "تجارت و معاشیات (Business)"
+        ),
+        WordItem(
+            english = "Monopoly",
+            urdu = "اجارہ داری",
+            romanUrdu = "Ijaara Daari",
+            partOfSpeech = "Noun (اسم)",
+            definition = "The exclusive possession or control of the supply of or trade in a commodity or service.",
+            urduDefinition = "کسی منڈی یا پیداوار پر کسی ایک کمپنی یا گروہ کا مکمل تسلط اور بلا شرکت غیرے اختیار۔",
+            exampleEn = "The government enacted antitrust laws to curb monopoly.",
+            exampleUr = "حکومت نے اجارہ داری کے خاتمے کے لیے قوانین نافذ کیے۔",
+            synonyms = "Exclusive control, Dominance, Cartel",
+            category = "تجارت و معاشیات (Business)"
+        ),
+
+        // ================= DAILY CONVERSATION & SOCIAL LIFE (روزمرہ بول چال) =================
+        WordItem(
+            english = "Hospitality",
+            urdu = "مہمان نوازی",
+            romanUrdu = "Mehman Nawazi",
+            partOfSpeech = "Noun (اسم)",
+            definition = "The friendly and generous reception and entertainment of guests, visitors, or strangers.",
+            urduDefinition = "مہمانوں، مسافروں اور اجنبیوں کا گرمجوشی اور فراخدلی کے ساتھ استقبال اور دیکھ بھال۔",
+            exampleEn = "The people of this region are world-renowned for their hospitality.",
+            exampleUr = "اس خطے کے لوگ اپنی لاجواب مہمان نوازی کے لیے دنیا بھر میں جانے جاتے ہیں۔",
+            synonyms = "Warmth, Friendliness, Generosity, Welcoming spirit",
+            category = "روزمرہ بول چال (Daily Life)"
+        ),
+        WordItem(
+            english = "Gratitude",
+            urdu = "شکر گزاری / احسان مندی",
+            romanUrdu = "Shukr Guzari / Ehsaan Mandi",
+            partOfSpeech = "Noun (اسم)",
+            definition = "The quality of being thankful; readiness to show appreciation for and to return kindness.",
+            urduDefinition = "کسی کے احسان اور بھلائی کا دل سے اعتراف کرنا اور شکریہ ادا کرنا۔",
+            exampleEn = "He expressed sincere gratitude for their continuous support.",
+            exampleUr = "اس نے ان کے مسلسل تعاون پر دلی شکر گزاری کا اظہار کیا۔",
+            synonyms = "Thankfulness, Appreciation, Acknowledgment",
+            antonyms = "Ingratitude",
+            category = "روزمرہ بول چال (Daily Life)"
+        ),
+        WordItem(
+            english = "Perseverance",
+            urdu = "ثابت قدمی / استقامت",
+            romanUrdu = "Sabit Qadmi / Istiqamat",
+            partOfSpeech = "Noun (اسم)",
+            definition = "Persistence in doing something despite difficulty or delay in achieving success.",
+            urduDefinition = "مشکلات اور رکاوٹوں کے باوجود اپنے مقصد پر ڈٹے رہنے اور مسلسل محنت کرنے کا جذبہ۔",
+            exampleEn = "Through patience and perseverance, she overcame all obstacles.",
+            exampleUr = "صبر اور ثابت قدمی کے ذریعے اس نے تمام رکاوٹوں پر قابو پا لیا۔",
+            synonyms = "Persistence, Tenacity, Dedication, Endurance",
+            category = "روزمرہ بول چال (Daily Life)"
+        ),
+        WordItem(
+            english = "Compassion",
+            urdu = "ہمدردی / دلی شفقت",
+            romanUrdu = "Hamdardi / Dili Shafqat",
+            partOfSpeech = "Noun (اسم)",
+            definition = "Sympathetic pity and concern for the sufferings or misfortunes of others.",
+            urduDefinition = "دوسروں کے دکھ درد اور تکلیف کو اپنا سمجھ کر دل میں پیدا ہونے والا رحم کا جذبہ۔",
+            exampleEn = "Treating others with compassion makes the world a better place.",
+            exampleUr = "دوسروں کے ساتھ ہمدردی سے پیش آنا دنیا کو ایک بہتر جگہ بناتا ہے۔",
+            synonyms = "Empathy, Kindness, Benevolence, Mercy",
+            category = "روزمرہ بول چال (Daily Life)"
+        ),
+        WordItem(
+            english = "Benevolent",
+            urdu = "مہربان / فیاض / خیر خواہ",
+            romanUrdu = "Meharban / Fayyaz / Khair Khwah",
+            partOfSpeech = "Adjective (صفت)",
+            definition = "Well meaning and kindly; serving a charitable rather than a profit-making purpose.",
+            urduDefinition = "ایسا شخص جو دوسروں کی بھلائی چاہتا ہو اور فیاضی سے کام لیتا ہو۔",
+            exampleEn = "The benevolent leader donated generously to the orphanage.",
+            exampleUr = "اس فیاض رہنما نے یتیم خانے کو دل کھول کر عطیہ دیا۔",
+            synonyms = "Generous, Philanthropic, Altruistic, Kind",
+            antonyms = "Malevolent, Cruel",
+            category = "روزمرہ بول چال (Daily Life)"
+        ),
+        WordItem(
+            english = "Integrity",
+            urdu = "دیانت داری / سچائی / کردار کی پختگی",
+            romanUrdu = "Diyanat Daari / Kirdar ki pukhtagi",
+            partOfSpeech = "Noun (اسم)",
+            definition = "The quality of being honest and having strong moral principles.",
+            urduDefinition = "اخلاقی اصولوں پر سختی سے عمل پیرا ہونا اور ہر حال میں ایمانداری کا مظاہرہ کرنا۔",
+            exampleEn = "A person of true integrity refuses to compromise on principles.",
+            exampleUr = "سچی دیانت داری کا حامل شخص کبھی اصولوں پر سمجھوتہ نہیں کرتا۔",
+            synonyms = "Honesty, Rectitude, Uprightness, Probity",
+            category = "روزمرہ بول چال (Daily Life)"
+        ),
+
+        // ================= OFFICE & ADMINISTRATION (دفتری و انتظامی) =================
+        WordItem(
+            english = "Bureaucracy",
+            urdu = "نوکر شاہی / دفتری نظام",
+            romanUrdu = "Naukar Shahi / Daftari Nizam",
+            partOfSpeech = "Noun (اسم)",
+            definition = "A system of government in which most of the important decisions are taken by state officials rather than by elected representatives.",
+            urduDefinition = "سرکاری دفاتر اور ملازمین کا وہ پیچیدہ انتظامی نظام جس میں سخت قوانین اور قواعد لاگو ہوتے ہیں۔",
+            exampleEn = "Excessive bureaucracy can slow down economic development.",
+            exampleUr = "حد سے زیادہ نوکر شاہی معاشی ترقی کی رفتار سست کر سکتی ہے۔",
+            synonyms = "Red tape, Civil service, Administration",
+            category = "دفتری و انتظامی (Administration)"
+        ),
+        WordItem(
+            english = "Consensus",
+            urdu = "اتفاقِ رائے / ہم آہنگی",
+            romanUrdu = "Ittifaq-e-Rai / Hum Ahangi",
+            partOfSpeech = "Noun (اسم)",
+            definition = "A general agreement among a group of people.",
+            urduDefinition = "کسی معاملے یا فیصلے پر تمام متعلقہ افراد یا ارکان کا متفق ہو جانا۔",
+            exampleEn = "The committee reached a consensus on the new organizational policy.",
+            exampleUr = "کمیٹی نئے تنظیمی لائحہ عمل پر اتفاقِ رائے پر پہنچ گئی۔",
+            synonyms = "Agreement, Accord, Unanimity, Concord",
+            category = "دفتری و انتظامی (Administration)"
+        ),
+        WordItem(
+            english = "Delegation",
+            urdu = "تفویضِ اختیارات / وفد",
+            romanUrdu = "Tafweez-e-Ikhtiyarat / Wafd",
+            partOfSpeech = "Noun (اسم)",
+            definition = "The assignment of any authority to another person, or a body of delegates.",
+            urduDefinition = "اپنے ماتحت کو کام یا اختیارات سونپنے کا عمل، یا نمائندوں پر مشتمل وفد۔",
+            exampleEn = "Effective managers understand the importance of task delegation.",
+            exampleUr = "مؤثر منتظمین کام کی تفویض کی اہمیت کو بخوبی سمجھتے ہیں۔",
+            synonyms = "Deputation, Assignment, Devolution",
+            category = "دفتری و انتظامی (Administration)"
+        ),
+        WordItem(
+            english = "Compliance",
+            urdu = "حکم عدولی سے اجتناب / پابندی / تعمیل",
+            romanUrdu = "Tameel / Pabandi",
+            partOfSpeech = "Noun (اسم)",
+            definition = "The action or fact of complying with a wish, rule, or demand.",
+            urduDefinition = "قوانین، ضوابط یا احکامات کی پاسداری اور ان کے مطابق عمل درآمد کرنا۔",
+            exampleEn = "All employees must ensure full compliance with safety regulations.",
+            exampleUr = "تمام ملازمین کو حفاظتی قواعد و ضوابط کی مکمل تعمیل کو یقینی بنانا چاہیے۔",
+            synonyms = "Conformity, Adherence, Obedience, Acquiescence",
+            category = "دفتری و انتظامی (Administration)"
+        ),
+
+        // ================= LITERATURE & ARTS (ادب و فنون) =================
+        WordItem(
+            english = "Metaphor",
+            urdu = "استعارہ",
+            romanUrdu = "Isti'aara",
+            partOfSpeech = "Noun (اسم)",
+            definition = "A figure of speech in which a word or phrase is applied to an object or action to which it is not literally applicable.",
+            urduDefinition = "علمِ بیان کی وہ صفت جس میں کسی لفظ کو اس کے حقیقی معنی کے بجائے مجازی معنی میں استعمال کیا جائے۔",
+            exampleEn = "Poets often use metaphor to create vivid emotional imagery.",
+            exampleUr = "شعراء اکثر گہرے جذباتی تاثرات پیدا کرنے کے لیے استعارہ استعمال کرتے ہیں۔",
+            synonyms = "Allegory, Analogy, Symbol, Figure of speech",
+            category = "ادب و شاعری (Literature)"
+        ),
+        WordItem(
+            english = "Eloquence",
+            urdu = "فصاحت و بلاغت / شستہ بیانی",
+            romanUrdu = "Fasahat-o-Balaghat / Shusta Bayani",
+            partOfSpeech = "Noun (اسم)",
+            definition = "Fluent or persuasive speaking or writing.",
+            urduDefinition = "گفتگو یا تحریر میں فصیح، دلکش اور مؤثر انداز جو سننے یا پڑھنے والے کو مسحور کر دے۔",
+            exampleEn = "The orator captivated the entire gathering with his eloquence.",
+            exampleUr = "مقرر نے اپنی فصاحت و بلاغت سے پورے مجمع کو مسحور کر دیا۔",
+            synonyms = "Fluency, Articulacy, Expressiveness, Rhetoric",
+            category = "ادب و شاعری (Literature)"
+        ),
+        WordItem(
+            english = "Nostalgia",
+            urdu = "یادِ ماضی / وطن یا ماضی کی تڑپ",
+            romanUrdu = "Yaad-e-Mazi / Mazi ki tarap",
+            partOfSpeech = "Noun (اسم)",
+            definition = "A sentimental longing or wistful affection for a period in the past.",
+            urduDefinition = "ماضی کے خوبصورت ایام، پرانے دوستوں یا اپنے وطن کی یاد میں پیدا ہونے والا دلی اشتیاق۔",
+            exampleEn = "Listening to old folk songs filled him with nostalgia.",
+            exampleUr = "پرانے لوک گیت سن کر اس کا دل یادِ ماضی سے بھر گیا۔",
+            synonyms = "Reminiscence, Longing, Yearning, Homesickness",
+            category = "ادب و شاعری (Literature)"
+        ),
+        WordItem(
+            english = "Melancholy",
+            urdu = "اداسی / رنجیدگی / یاسیت",
+            romanUrdu = "Udasi / Ranjeedgi / Yasiyat",
+            partOfSpeech = "Noun / Adjective (اسم / صفت)",
+            definition = "A feeling of pensive sadness, typically with no obvious cause.",
+            urduDefinition = "دھیمی اور گہری اداسی کی کیفیت جس کی بظاہر کوئی واضح وجہ نہ ہو۔",
+            exampleEn = "An aura of quiet melancholy settled over the deserted garden.",
+            exampleUr = "ویران باغ پر ایک پرسکون اداسی کا سماں چھا گیا۔",
+            synonyms = "Sorrow, Gloom, Dejection, Despondency",
+            category = "ادب و شاعری (Literature)"
+        ),
+        WordItem(
+            english = "Solitude",
+            urdu = "تنہائی / خلوت گزینی",
+            romanUrdu = "Tanhai / Khalwat Guzeeni",
+            partOfSpeech = "Noun (اسم)",
+            definition = "The state or situation of being alone, often experienced as peaceful.",
+            urduDefinition = "لوگوں کی بھیڑ سے دور اکیلے رہنے کی وہ کیفیت جو سکون اور غور و فکر کا موقع دے۔",
+            exampleEn = "He enjoyed reading poetry in the peaceful solitude of the library.",
+            exampleUr = "اس نے لائبریری کی پرسکون تنہائی میں شاعری کے مطالعے کا لطف اٹھایا۔",
+            synonyms = "Isolation, Seclusion, Loneliness, Privacy",
+            category = "ادب و شاعری (Literature)"
+        ),
+
+        // ================= GENERAL VOCABULARY FOR STUDENTS & PROFESSIONALS =================
+        WordItem(
+            english = "Ambition",
+            urdu = "امنگ / بلند مقصد / خواہش",
+            romanUrdu = "Ummang / Buland Maqsad",
+            partOfSpeech = "Noun (اسم)",
+            definition = "A strong desire to do or achieve something, typically requiring determination and hard work.",
+            urduDefinition = "کامیابی، بلندی یا ترقی حاصل کرنے کی سچی اور پختہ آرزو۔",
+            exampleEn = "Her ambition is to become a world-class neurosurgeon.",
+            exampleUr = "اس کی امنگ ایک عالمی شہرت یافتہ نیورو سرجن بننا ہے۔",
+            synonyms = "Aspiration, Goal, Objective, Striving",
+            category = "تعلیم (Academic)"
+        ),
+        WordItem(
+            english = "Diligence",
+            urdu = "محنت / جانفشانی / تندہی",
+            romanUrdu = "Mehnat / Jaanfishani / Tandehi",
+            partOfSpeech = "Noun (اسم)",
+            definition = "Persistent and hard-working effort in carrying out tasks.",
+            urduDefinition = "کسی کام کو پوری توجہ، خلوص اور انتھک محنت سے سرانجام دینے کا رویہ۔",
+            exampleEn = "His diligence in his studies earned him top honors in the class.",
+            exampleUr = "تعلیم میں اس کی جانفشانی نے اسے جماعت میں اعلیٰ پوزیشن دلائی۔",
+            synonyms = "Hard work, Conscientiousness, Assiduity, Industry",
+            category = "تعلیم (Academic)"
+        ),
+        WordItem(
+            english = "Pragmatic",
+            urdu = "عملی / حقیقت پسندانہ",
+            romanUrdu = "Amali / Haqeeqat Pasandana",
+            partOfSpeech = "Adjective (صفت)",
+            definition = "Dealing with things sensibly and realistically in a way that is based on practical rather than theoretical considerations.",
+            urduDefinition = "خام خیالی کے بجائے زمینی حقائق اور عملی نتائج کی بنیاد پر سوچنا اور قدم اٹھانا۔",
+            exampleEn = "We need a pragmatic approach to resolve this urban issue.",
+            exampleUr = "اس شہری مسئلے کے حل کے لیے ہمیں حقیقت پسندانہ انداز اپنانا ہوگا۔",
+            synonyms = "Practical, Realistic, Sensible, Down-to-earth",
+            category = "دفتری و انتظامی (Administration)"
+        ),
+        WordItem(
+            english = "Resilience",
+            urdu = "لچک / مصائب سہنے کی قوت / پھر سنبھلنے کی صلاحیت",
+            romanUrdu = "Lachak / Phir Sanbhalne ki salahiyat",
+            partOfSpeech = "Noun (اسم)",
+            definition = "The capacity to recover quickly from difficulties; toughness.",
+            urduDefinition = "شدید مشکلات، ناکامی یا صدمے کے بعد دوبارہ ہمت سے کھڑے ہونے کی صلاحیت۔",
+            exampleEn = "The nation demonstrated remarkable resilience after the natural disaster.",
+            exampleUr = "قدرتی آفت کے بعد قوم نے غیر معمولی طور پر دوبارہ سنبھلنے کی صلاحیت کا مظاہرہ کیا۔",
+            synonyms = "Toughness, Elasticity, Adaptability, Grit",
+            category = "روزمرہ بول چال (Daily Life)"
+        ),
+        WordItem(
+            english = "Democracy",
+            urdu = "جمہوریت / عوامی راج",
+            romanUrdu = "Jamhooriyat / Awami Raaj",
+            partOfSpeech = "Noun (اسم)",
+            definition = "A system of government by the whole population or all the eligible members of a state, typically through elected representatives.",
+            urduDefinition = "حکومت کا وہ نظام جس میں اختیارات کا سرچشمہ عوام ہوتے ہیں اور وہ اپنے نمائندے منتخب کرتے ہیں۔",
+            exampleEn = "Freedom of speech is the bedrock of democracy.",
+            exampleUr = "آزادی اظہارِ رائے جمہوریت کی بنیاد ہے۔",
+            synonyms = "Self-government, Representative government",
+            category = "قانون و انصاف (Law & Justice)"
+        ),
+        WordItem(
+            english = "Sovereignty",
+            urdu = "خود مختاری / اقتدارِ اعلیٰ",
+            romanUrdu = "Khud Mukhtari / Iqtidaar-e-Aala",
+            partOfSpeech = "Noun (اسم)",
+            definition = "Supreme power or authority; the authority of a state to govern itself or another state.",
+            urduDefinition = "کسی ریاست یا حاکم کا بغیر کسی بیرونی مداخلت کے اپنے فیصلے خود کرنے کا مکمل اختیار۔",
+            exampleEn = "Every independent nation fiercely protects its territorial sovereignty.",
+            exampleUr = "ہر آزاد قوم اپنی علاقائی خود مختاری کا بھرپور دفاع کرتی ہے۔",
+            synonyms = "Independence, Autonomy, Supremacy",
+            category = "قانون و انصاف (Law & Justice)"
+        )
+    )
+}

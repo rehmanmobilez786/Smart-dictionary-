@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">اردو انگلش ڈکشنری</string>
+    <string name="search_hint">تلاش کریں / Search English or اردو...</string>
+    <string name="favorites_title">محفوظ الفاظ (Favorites)</string>
+    <string name="history_title">حالیہ تلاش (History)</string>
+    <string name="word_of_day_title">آج کا منتخب لفظ</string>
+    <string name="quiz_title">الفاظ کا کوئز (Vocabulary Quiz)</string>
+    <string name="categories_title">شعبہ جات (Categories)</string>
+    <string name="online_search">آن لائن تلاش (Live Search)</string>
+    <string name="offline_mode">آف لائن موڈ (Offline)</string>
+</resources>
