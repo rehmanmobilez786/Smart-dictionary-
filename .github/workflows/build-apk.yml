@@ -2,35 +2,127 @@ name: Build Android APK
 
 on:
   push:
-    branches: [ "main", "master" ]
+    branches: [ '**' ]
+    tags:
+      - 'v*'
   pull_request:
-    branches: [ "main", "master" ]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
-  build:
-    name: Build APK
+  build-apk:
+    name: Build & Package APK
     runs-on: ubuntu-latest
+    timeout-minutes: 30
+
     steps:
-      - name: Checkout Code
+      - name: Checkout Repository
         uses: actions/checkout@v4
-
-      - name: Set up Java JDK 21
-        uses: actions/setup-java@v4
         with:
-          java-version: '21'
+          fetch-depth: 1
+
+      - name: Set up Java 21 (Temurin)
+        uses: actions/setup-java@v5
+        with:
           distribution: 'temurin'
-          cache: gradle
+          java-version: '21'
 
-      - name: Make Gradlew Executable
-        run: chmod +x gradlew
+      - name: Setup Gradle 9.3.1
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.3.1'
 
-      - name: Build Debug APK with Gradle Wrapper
-        run: ./gradlew assembleDebug --no-configuration-cache --stacktrace
+      - name: Prepare Signing & Environment
+        run: |
+          # 1. Clear any corrupted or empty keystore
+          rm -f debug.keystore
+
+          # 2. Decode base64 debug keystore if present and valid
+          if [ -f "debug.keystore.base64" ] && [ -s "debug.keystore.base64" ]; then
+            echo "Restoring debug.keystore from base64..."
+            base64 -d debug.keystore.base64 > debug.keystore 2>/dev/null || true
+          fi
+
+          # 3. If keystore is still missing, generate a clean debug keystore
+          if [ ! -f "debug.keystore" ] || [ ! -s "debug.keystore" ]; then
+            echo "Generating clean debug.keystore..."
+            rm -f debug.keystore
+            keytool -genkeypair -v \
+              -keystore debug.keystore \
+              -storepass android \
+              -alias androiddebugkey \
+              -keypass android \
+              -keyalg RSA \
+              -keysize 2048 \
+              -validity 10000 \
+              -dname "CN=Android Debug,O=Android,C=US"
+          fi
+
+          # 4. Ensure .env exists for secrets gradle plugin
+          if [ ! -f ".env" ]; then
+            if [ -f ".env.example" ]; then
+              cp .env.example .env
+            else
+              touch .env
+            fi
+          fi
+
+          # 5. Make gradlew executable if present
+          chmod +x gradlew 2>/dev/null || true
+
+      - name: Build Debug APK
+        run: |
+          if [ -f "gradlew" ] && [ -f "gradle/wrapper/gradle-wrapper.jar" ]; then
+            echo "Building with Gradle Wrapper..."
+            ./gradlew :app:assembleDebug --no-daemon --stacktrace
+          else
+            echo "Building with installed Gradle..."
+            gradle :app:assembleDebug --no-daemon --stacktrace
+          fi
+
+      - name: Collect Built APK
+        id: collect_apk
+        run: |
+          mkdir -p output-apk
+          APK_FILE=$(find app/build/outputs/apk/debug -name "*.apk" -type f 2>/dev/null | head -n 1)
+          if [ -z "$APK_FILE" ]; then
+            APK_FILE=$(find . -name "*debug*.apk" -type f 2>/dev/null | head -n 1)
+          fi
+          if [ -z "$APK_FILE" ]; then
+            APK_FILE=$(find . -name "*.apk" -type f 2>/dev/null | head -n 1)
+          fi
+
+          if [ -n "$APK_FILE" ]; then
+            echo "Found APK at $APK_FILE"
+            cp "$APK_FILE" output-apk/Personal-Notebook.apk
+            ls -lh output-apk/
+          else
+            echo "Error: No APK file found after assembleDebug!"
+            exit 1
+          fi
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: UrduEnglishDictionary-APK
-          path: app/build/outputs/apk/debug/*.apk
+          name: Personal-Notebook-APK
+          path: output-apk/Personal-Notebook.apk
           retention-days: 30
+          if-no-files-found: error
+
+      - name: Publish GitHub Release (on Version Tag)
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v3
+        with:
+          files: output-apk/Personal-Notebook.apk
+          draft: false
+          prerelease: false
+          generate_release_notes: true
