@@ -109,6 +109,13 @@ class DictionaryViewModel(application: Application) : AndroidViewModel(applicati
     private val _quizStreak = MutableStateFlow(0)
     val quizStreak: StateFlow<Int> = _quizStreak.asStateFlow()
 
+    // OCR States for Camera and Gallery scanning
+    private val _scannedWordsForSelection = MutableStateFlow<List<String>>(emptyList())
+    val scannedWordsForSelection: StateFlow<List<String>> = _scannedWordsForSelection.asStateFlow()
+
+    private val _isOcrScanning = MutableStateFlow(false)
+    val isOcrScanning: StateFlow<Boolean> = _isOcrScanning.asStateFlow()
+
     // ================= TRANSLATION STATE =================
     private val _translateSourceText = MutableStateFlow("")
     val translateSourceText: StateFlow<String> = _translateSourceText.asStateFlow()
@@ -373,6 +380,59 @@ class DictionaryViewModel(application: Application) : AndroidViewModel(applicati
         viewModelScope.launch {
             translationManager.clearHistory()
             _snackbarMessage.value = "ترجمے کی تاریخ صاف کر دی گئی"
+        }
+    }
+
+    // ================= OCR ACTIONS (CAMERA & GALLERY) =================
+    fun setOcrScanning(scanning: Boolean) {
+        _isOcrScanning.value = scanning
+    }
+
+    fun clearScannedWords() {
+        _scannedWordsForSelection.value = emptyList()
+    }
+
+    fun selectScannedWord(word: String) {
+        updateSearchQuery(word)
+        _scannedWordsForSelection.value = emptyList()
+    }
+
+    fun handleOcrResultForTranslation(scannedText: String) {
+        val clean = scannedText.trim()
+        if (clean.isBlank()) {
+            _snackbarMessage.value = "تصویر سے کوئی متن نہیں ملا (No text detected in image)"
+            return
+        }
+        _translateSourceText.value = clean
+        // Detect language: check if Urdu unicode characters are present
+        val hasUrdu = clean.any { it in '\u0600'..'\u06FF' }
+        if (hasUrdu) {
+            _translateSourceLang.value = "ur"
+            _translateTargetLang.value = "en"
+        } else {
+            _translateSourceLang.value = "en"
+            _translateTargetLang.value = "ur"
+        }
+        _snackbarMessage.value = "تصویر سے متن اسکین کر لیا گیا (Text scanned successfully)"
+        performTranslation()
+    }
+
+    fun handleOcrResultForDictionary(scannedText: String) {
+        val clean = scannedText.trim()
+        if (clean.isBlank()) {
+            _snackbarMessage.value = "تصویر سے کوئی لفظ نہیں ملا (No text detected in image)"
+            return
+        }
+        val words = com.example.util.OcrHelper.extractSearchableWords(clean)
+        if (words.isEmpty()) {
+            updateSearchQuery(clean.take(30))
+        } else if (words.size == 1) {
+            updateSearchQuery(words[0])
+            _snackbarMessage.value = "لفظ مل گیا: ${words[0]}"
+        } else {
+            _scannedWordsForSelection.value = words
+            updateSearchQuery(words[0])
+            _snackbarMessage.value = "تصویر سے ${words.size} الفاظ ملے، اپنی پسند کا لفظ منتخب کریں"
         }
     }
 

@@ -107,6 +107,9 @@ fun DictionaryApp(viewModel: DictionaryViewModel = viewModel()) {
     val quizScore by viewModel.quizScore.collectAsStateWithLifecycle()
     val quizStreak by viewModel.quizStreak.collectAsStateWithLifecycle()
 
+    // OCR Scanned Words
+    val scannedWordsForSelection by viewModel.scannedWordsForSelection.collectAsStateWithLifecycle()
+
     val snackbarHostState = remember { SnackbarHostState() }
 
     // Handle back button on secondary tabs
@@ -283,7 +286,11 @@ fun DictionaryApp(viewModel: DictionaryViewModel = viewModel()) {
                         onSearchOnline = { viewModel.searchOnline(it) },
                         onWordClick = { viewModel.openWordDetail(it) },
                         onFavoriteToggle = { viewModel.toggleFavorite(it) },
-                        onSpeak = { viewModel.speakWord(it) }
+                        onSpeak = { viewModel.speakWord(it) },
+                        scannedWords = scannedWordsForSelection,
+                        onSelectScannedWord = { viewModel.selectScannedWord(it) },
+                        onClearScannedWords = { viewModel.clearScannedWords() },
+                        onOcrScannedText = { viewModel.handleOcrResultForDictionary(it) }
                     )
 
                     1 -> TranslatorScreen(
@@ -300,7 +307,8 @@ fun DictionaryApp(viewModel: DictionaryViewModel = viewModel()) {
                         isOnlineMode = isOnlineModeActive,
                         isNetworkAvailable = isNetworkOnline,
                         history = translationHistory,
-                        onClearHistory = { viewModel.clearTranslationHistory() }
+                        onClearHistory = { viewModel.clearTranslationHistory() },
+                        onOcrScannedText = { viewModel.handleOcrResultForTranslation(it) }
                     )
 
                     2 -> FavoritesScreen(

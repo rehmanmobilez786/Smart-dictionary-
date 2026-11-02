@@ -52,11 +52,29 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import android.widget.Toast
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.PickVisualMediaRequest
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.material.icons.filled.CameraAlt
+import androidx.compose.material.icons.filled.PhotoLibrary
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.platform.LocalContext
 import com.example.data.model.WordItem
 import com.example.ui.components.WordCard
 import com.example.ui.components.WordOfTheDayCard
 import com.example.ui.viewmodel.SearchFilter
+import com.example.util.OcrHelper
+import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun DictionaryScreen(
     searchQuery: String,
@@ -76,8 +94,59 @@ fun DictionaryScreen(
     onWordClick: (WordItem) -> Unit,
     onFavoriteToggle: (WordItem) -> Unit,
     onSpeak: (String) -> Unit,
+    scannedWords: List<String> = emptyList(),
+    onSelectScannedWord: (String) -> Unit = {},
+    onClearScannedWords: () -> Unit = {},
+    onOcrScannedText: (String) -> Unit = {},
     modifier: Modifier = Modifier
 ) {
+    val context = LocalContext.current
+    val coroutineScope = rememberCoroutineScope()
+    var isOcrProcessing by remember { mutableStateOf(false) }
+
+    val cameraLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.TakePicturePreview()
+    ) { bitmap ->
+        if (bitmap != null) {
+            isOcrProcessing = true
+            coroutineScope.launch {
+                val res = OcrHelper.recognizeTextFromBitmap(bitmap)
+                isOcrProcessing = false
+                res.onSuccess { text ->
+                    onOcrScannedText(text)
+                }.onFailure {
+                    Toast.makeText(context, "تصویر سے متن پڑھنے میں خرابی", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+    val cameraPermissionLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.RequestPermission()
+    ) { isGranted ->
+        if (isGranted) {
+            cameraLauncher.launch(null)
+        } else {
+            Toast.makeText(context, "کیمرہ کی اجازت درکار ہے (Camera permission required)", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    val photoPickerLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.PickVisualMedia()
+    ) { uri ->
+        if (uri != null) {
+            isOcrProcessing = true
+            coroutineScope.launch {
+                val res = OcrHelper.recognizeTextFromUri(context, uri)
+                isOcrProcessing = false
+                res.onSuccess { text ->
+                    onOcrScannedText(text)
+                }.onFailure {
+                    Toast.makeText(context, "گیلری سے تصویر پڑھنے میں خرابی", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
     val categoryList = listOf("تمام (All)") + categories.filter { it.isNotBlank() }
 
     LazyColumn(
@@ -164,14 +233,44 @@ fun DictionaryScreen(
                         )
                     },
                     trailingIcon = {
-                        if (searchQuery.isNotEmpty()) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            if (searchQuery.isNotEmpty()) {
+                                IconButton(
+                                    onClick = { onSearchQueryChange("") },
+                                    modifier = Modifier.size(36.dp).testTag("clear_search_btn")
+                                ) {
+                                    Icon(
+                                        imageVector = Icons.Default.Clear,
+                                        contentDescription = "صاف کریں"
+                                    )
+                                }
+                            }
+
                             IconButton(
-                                onClick = { onSearchQueryChange("") },
-                                modifier = Modifier.testTag("clear_search_btn")
+                                onClick = {
+                                    cameraPermissionLauncher.launch(android.Manifest.permission.CAMERA)
+                                },
+                                modifier = Modifier.size(36.dp).testTag("dict_camera_btn")
                             ) {
                                 Icon(
-                                    imageVector = Icons.Default.Clear,
-                                    contentDescription = "صاف کریں"
+                                    imageVector = Icons.Default.CameraAlt,
+                                    contentDescription = "کیمرہ سے اسکین کریں (Scan from Camera)",
+                                    tint = MaterialTheme.colorScheme.primary
+                                )
+                            }
+
+                            IconButton(
+                                onClick = {
+                                    photoPickerLauncher.launch(
+                                        PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
+                                    )
+                                },
+                                modifier = Modifier.size(36.dp).testTag("dict_gallery_btn")
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.PhotoLibrary,
+                                    contentDescription = "گیلری تصویر سے اسکین کریں (Scan from Gallery)",
+                                    tint = MaterialTheme.colorScheme.secondary
                                 )
                             }
                         }
@@ -183,6 +282,93 @@ fun DictionaryScreen(
                         unfocusedBorderColor = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f)
                     )
                 )
+
+                if (isOcrProcessing) {
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Card(
+                        modifier = Modifier.fillMaxWidth(),
+                        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.5f)),
+                        shape = RoundedCornerShape(10.dp)
+                    ) {
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 14.dp, vertical = 10.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            CircularProgressIndicator(
+                                modifier = Modifier.size(18.dp),
+                                strokeWidth = 2.dp,
+                                color = MaterialTheme.colorScheme.primary
+                            )
+                            Spacer(modifier = Modifier.width(10.dp))
+                            Text(
+                                text = "تصویر سے الفاظ پڑھے جا رہے ہیں... (Scanning image...)",
+                                style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.Medium)
+                            )
+                        }
+                    }
+                }
+
+                if (scannedWords.isNotEmpty()) {
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Card(
+                        modifier = Modifier.fillMaxWidth(),
+                        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.45f)),
+                        shape = RoundedCornerShape(14.dp)
+                    ) {
+                        Column(modifier = Modifier.padding(12.dp)) {
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Text(
+                                    text = "تصویر سے حاصل شدہ الفاظ (Scanned Words - Tap to Search):",
+                                    style = MaterialTheme.typography.labelSmall.copy(
+                                        fontWeight = FontWeight.Bold,
+                                        color = MaterialTheme.colorScheme.onSecondaryContainer
+                                    )
+                                )
+                                IconButton(
+                                    onClick = onClearScannedWords,
+                                    modifier = Modifier.size(24.dp)
+                                ) {
+                                    Icon(
+                                        imageVector = Icons.Default.Clear,
+                                        contentDescription = "بند کریں",
+                                        tint = MaterialTheme.colorScheme.outline,
+                                        modifier = Modifier.size(16.dp)
+                                    )
+                                }
+                            }
+                            Spacer(modifier = Modifier.height(6.dp))
+                            FlowRow(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.spacedBy(6.dp),
+                                verticalArrangement = Arrangement.spacedBy(6.dp)
+                            ) {
+                                scannedWords.forEach { word ->
+                                    Surface(
+                                        shape = RoundedCornerShape(8.dp),
+                                        color = MaterialTheme.colorScheme.surface,
+                                        shadowElevation = 1.dp,
+                                        modifier = Modifier.clickable { onSelectScannedWord(word) }
+                                    ) {
+                                        Text(
+                                            text = word,
+                                            style = MaterialTheme.typography.bodySmall.copy(
+                                                fontWeight = FontWeight.Bold,
+                                                color = MaterialTheme.colorScheme.primary
+                                            ),
+                                            modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp)
+                                        )
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
 
                 Spacer(modifier = Modifier.height(8.dp))
 
